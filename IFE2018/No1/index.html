@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>制作一个简单的菜单动画效果</title>
+    <style type="text/css">
+        .btn-wrap{
+            text-align: center;
+        }
+        .box{
+            width: 150px;
+            line-height: 80px;
+            margin: 50px auto;
+            font-size: 32px;
+            position: relative;
+            text-align: center;
+            /* 文字颜色动画效果 */
+            transition: color 1s;
+        }
+        .box:hover, .btn1, .btn2, .btn3{
+            color: blue;
+        }
+        /* 使用伪元素制作边框 */
+        .box::after{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            content: '';
+            width: 150px;
+            height: 4px;
+            background: blue;
+        }
+
+        /* 动画效果1，利用scaleX控制线条的显示与隐藏 */
+        .box1::after {
+            transition: transform 1s linear;
+            transform: scaleX(0);
+        }
+        .box1:hover::after, .btn1::after{
+            transform: scaleX(1);
+        }
+
+        /* 动画效果2，利用hover加两层transform-origin，使线条产生两种不同的运动方向， */
+        .box2::after {
+            transition: transform 1s linear;
+            transform: scaleX(0);
+            transform-origin: 100% center;
+        }
+        .box2:hover::after, .btn2::after{
+            transform: scaleX(1);
+            transform-origin: 0 center;
+        }
+
+        /* 动画效果3，利用transform-origin控制线条的运动方向 */
+        .box3::after {
+            transition: transform 1s linear;
+            transform: scaleX(0);
+            transform-origin: 0 center;
+        }
+        .box3:hover::after, .btn3::after{
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+<div class="box box1" id="box1">
+    动画效果1
+</div>
+<div class="box box2" id="box2">
+    动画效果2
+</div>
+<div class="box box3" id="box3">
+    动画效果3
+</div>
+<div class="btn-wrap">
+    <button id="btn1">动画效果1，边框从中间扩散</button>
+    <button id="btn2">动画效果2，边框左进右出</button>
+    <button id="btn3">动画效果3，边框左近左出</button>
+</div>
+
+<script>
+    document.getElementById('btn1').onclick = function () {
+        document.getElementById('box1').classList.toggle('btn1');
+    };
+    document.getElementById('btn2').onclick = function () {
+        document.getElementById('box2').classList.toggle('btn2');
+    };
+    document.getElementById('btn3').onclick = function () {
+        document.getElementById('box3').classList.toggle('btn3');
+    };
+</script>
+</body>
+</html>
