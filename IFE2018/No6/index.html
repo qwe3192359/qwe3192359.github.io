@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>利用 CSS animation 制作一个炫酷的 Slider</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: absolute;
+        }
+        .box img{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .nav{
+            width: 1200px;
+            height: 100px;
+            margin: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .nav div{
+            max-width: 200px;
+
+            flex-grow: 1;
+            border: 1px solid #ccc;
+        }
+        .nav div img{
+            width: 100%;
+            height: 100%;
+        }
+        .animation1{
+            animation: first .5s ease-out;
+        }
+        .animation2{
+            animation: second .5s ease-out;
+        }
+        .animation3{
+            animation: thirdly 1s ease-in;
+        }
+        .animation4{
+            animation: fourthly 1s ease-out;
+        }
+        .animation5{
+            animation: fifth .7s ease-in-out;
+        }
+        @keyframes first
+        {
+            0%   {left: -500px;}
+            100% {left: 0;}
+        }
+        @keyframes second
+        {
+            0%   {top: 350px;}
+            100% {top: 0;}
+        }
+        @keyframes thirdly
+        {
+            0%   {transform: scale(0.1);}
+            100% {transform: scale(1);}
+        }
+        @keyframes fourthly
+        {
+            0%   {transform: scale(2);}
+            100% {transform: scale(1);}
+        }
+        @keyframes fifth
+        {
+            0%   {transform: scale(0.1) rotate(360deg);}
+            100% {transform: scale(1) rotate(0);}
+        }
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <img src="images/1.jpg">
+</div>
+<div class="nav">
+    <div id="btn1"><img src="images/1.jpg"></div>
+    <div id="btn2"><img src="images/1.jpg"></div>
+    <div id="btn3"><img src="images/1.jpg"></div>
+    <div id="btn4"><img src="images/1.jpg"></div>
+    <div id="btn5"><img src="images/1.jpg"></div>
+</div>
+<script>
+    let box = document.getElementById('box');
+    for(let i = 1;i < 6; i++){
+        document.getElementById('btn'+i).onclick = function(){
+            box.innerHTML = '<img class="animation'+ i +'" src="images/1.jpg">'
+        }
+    }
+</script>
+</body>
+</html>
