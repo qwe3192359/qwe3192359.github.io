@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡</title>
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            text-align: center;
+            line-height: 100px;
+            border: 1px solid #eee;
+            display: inline-block;
+        }
+        .box::after{
+            display: inline-block;
+            content: '';
+            height: 3px;
+            background: #e4393c;
+            transition: 3s;
+            position: absolute;
+            bottom: 0;
+        }
+        .box1::after{
+            left: 0;
+            width: 0;
+            transition: 3s;
+        }
+        .box1:hover::after{
+            width: 100%;
+        }
+        .box2::after{
+            right: 0;
+            width: 0;
+            transition: 3s;
+        }
+        .box2:hover::after{
+            width: 100%;
+            left: 0;
+        }
+        .box3::after{
+            right: 0;
+            width: 0;
+            transition: 3s;
+        }
+        .box3:hover::after{
+            width: 100%;
+        }
+        .box4::after{
+            right: 0;
+            width: 0;
+            transition: 3s;
+            left: 0;
+        }
+        .box4:hover::after{
+            width: 100%;
+            left: auto;
+            right: 0;
+        }
+        .box5::after{
+            left: 0;
+            width: 0;
+            transition: 3s;
+            margin: auto;
+        }
+        .box5:hover::after{
+            width: 100%;
+            right: 0;
+        }
+        .box6::after{
+            right: 0;
+            width: 0;
+            transition: 3s;
+            margin: auto;
+        }
+        .box6:hover::after{
+            width: 100%;
+            left: 0;
+        }
+        .box7::after{
+            right: 0;
+            width: 0;
+            transition: 3s;
+            margin: auto;
+            left: 0;
+        }
+        .box7:hover::after{
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box box1">左进左出</div>
+<div class="box box2">左进右出</div>
+<div class="box box3">右进右出</div>
+<div class="box box4">右进左出</div>
+<div class="box box5">中间进入左出</div>
+<div class="box box6">中间进右出</div>
+<div class="box box7">中间进中间出</div>
+
+</body>
+</html>
