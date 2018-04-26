@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>制作一个简单的菜单动画效果</title>
     <style type="text/css">
-        .btn-wrap{
+        .wrap{
             text-align: center;
+            margin: 0 auto;
         }
         .box{
+            display: inline-block;
             width: 150px;
             line-height: 80px;
             margin: 50px auto;
@@ -60,24 +62,103 @@
         .box3:hover::after, .btn3::after{
             transform: scaleX(1);
         }
+
+        .second-box-wrap{
+            text-align: center;
+            padding-top: 50px;
+        }
+        .second-box{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            text-align: center;
+            line-height: 100px;
+            border: 1px solid #eee;
+            display: inline-block;
+        }
+        .second-box::after{
+            display: inline-block;
+            content: '';
+            height: 3px;
+            background: #e4393c;
+            transition: 1s;
+            position: absolute;
+            bottom: 0;
+            width: 0;
+        }
+        .second-box:hover::after{
+            width: 100%;
+        }
+        .second-box1::after{
+            left: 0;
+        }
+        .second-box2::after{
+            right: 0;
+        }
+        .second-box2:hover::after{
+            left: 0;
+        }
+        .second-box3::after{
+            right: 0;
+            width: 0;
+        }
+        .second-box4::after{
+            right: 0;
+            left: 0;
+        }
+        .second-box4:hover::after{
+            left: auto;
+            right: 0;
+        }
+        .second-box5::after{
+            left: 0;
+            margin: auto;
+        }
+        .second-box5:hover::after{
+            right: 0;
+        }
+        .second-box6::after{
+            right: 0;
+            margin: auto;
+        }
+        .second-box6:hover::after{
+            left: 0;
+        }
+        .second-box7::after{
+            right: 0;
+            width: 0;
+            margin: auto;
+            left: 0;
+        }
     </style>
 </head>
 <body>
-<div class="box box1" id="box1">
-    动画效果1
-</div>
-<div class="box box2" id="box2">
-    动画效果2
-</div>
-<div class="box box3" id="box3">
-    动画效果3
-</div>
-<div class="btn-wrap">
+<div class="wrap">
+    <div class="box box1" id="box1">
+        动画效果1
+    </div>
+    <div class="box box2" id="box2">
+        动画效果2
+    </div>
+    <div class="box box3" id="box3">
+        动画效果3
+    </div>
+    <p>过渡+变换实现边框进出位置的改变</p>
     <button id="btn1">动画效果1，边框从中间扩散</button>
     <button id="btn2">动画效果2，边框左进右出</button>
     <button id="btn3">动画效果3，边框左近左出</button>
 </div>
 
+<div class="second-box-wrap">
+    <p>过渡+定位实现边框进出位置的改变</p>
+    <div class="second-box second-box1">左进左出</div>
+    <div class="second-box second-box2">左进右出</div>
+    <div class="second-box second-box3">右进右出</div>
+    <div class="second-box second-box4">右进左出</div>
+    <div class="second-box second-box5">中间进入左出</div>
+    <div class="second-box second-box6">中间进右出</div>
+    <div class="second-box second-box7">中间进中间出</div>
+</div>
 <script>
     document.getElementById('btn1').onclick = function () {
         document.getElementById('box1').classList.toggle('btn1');
