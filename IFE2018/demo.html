@@ -21,77 +21,55 @@
             content: '';
             height: 3px;
             background: #e4393c;
-            transition: 3s;
+            transition: 1s;
             position: absolute;
             bottom: 0;
+            width: 0;
+        }
+        .box:hover::after{
+            width: 100%;
         }
         .box1::after{
             left: 0;
-            width: 0;
-            transition: 3s;
-        }
-        .box1:hover::after{
-            width: 100%;
         }
         .box2::after{
             right: 0;
-            width: 0;
-            transition: 3s;
         }
         .box2:hover::after{
-            width: 100%;
             left: 0;
         }
         .box3::after{
             right: 0;
             width: 0;
-            transition: 3s;
-        }
-        .box3:hover::after{
-            width: 100%;
         }
         .box4::after{
             right: 0;
-            width: 0;
-            transition: 3s;
             left: 0;
         }
         .box4:hover::after{
-            width: 100%;
             left: auto;
             right: 0;
         }
         .box5::after{
             left: 0;
-            width: 0;
-            transition: 3s;
             margin: auto;
         }
         .box5:hover::after{
-            width: 100%;
             right: 0;
         }
         .box6::after{
             right: 0;
-            width: 0;
-            transition: 3s;
             margin: auto;
         }
         .box6:hover::after{
-            width: 100%;
             left: 0;
         }
         .box7::after{
             right: 0;
             width: 0;
-            transition: 3s;
             margin: auto;
             left: 0;
         }
-        .box7:hover::after{
-            width: 100%;
-        }
-
     </style>
 </head>
 <body>
