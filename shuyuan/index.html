@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_771479_xpdwejbznx.css">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .welcome {
+            width: 100vw;
+            height: 100vh;
+            background: #f6f6f4;
+            position: relative;
+
+        }
+
+        .welcome-box {
+            text-align: center;
+            padding-top: 10%;
+        }
+
+        .welcome img {
+            max-width: 100%;
+        }
+
+        .welcome p {
+            font-size: 28px;
+            color: #212121;
+            padding: 100px 0 120px;
+            letter-spacing: 8px;
+        }
+
+        .wrap {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: url("images/back.png"), url("images/back2.png") bottom left no-repeat;
+            overflow-x: hidden;
+            display: none;
+        }
+
+        .box {
+            background: #fff;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 5vh;
+            width: 64vw;
+            height: 36vw;
+            max-width: 1400px;
+            max-height: 790px;
+            border: 3px solid #c6c6c6;
+        }
+
+        .ico {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            font-size: 50px;
+            color: #777775;
+        }
+
+        .prev {
+            left: -100px;
+            transform: rotate(180deg);
+        }
+
+        .next {
+            right: -100px;
+        }
+        #con{
+            width: 100%;
+            height: 100%;
+        }
+        .con {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .con a {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .con img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .con .active {
+            opacity: 1;
+            transition: all 2s linear;
+        }
+
+        .btn {
+            width: 166px;
+            height: 71px;
+            border-radius: 10px;
+            border: 0;
+            position: absolute;
+            bottom: -120px;
+            font-size: 28px;
+            color: #fff;
+            line-height: 1;
+            letter-spacing: 4px;
+            outline: none;
+        }
+
+        .btn i {
+            font-size: 26px;
+            padding-right: 10px;
+        }
+
+        .btn1 {
+            background: #ee2c79;
+            left: 50px;
+        }
+
+        .btn2 {
+            background: #f9c116;
+            right: 50px;
+        }
+
+        .bor{
+            width: 52px;
+            height: 52px;
+            position: absolute;
+        }
+        .bor1{
+            left: -12px;
+            top: -12px;
+            border-left: 3px solid #a6a6a6;
+            border-top: 3px solid #a6a6a6;
+        }
+        .bor2{
+            right: -12px;
+            top: -12px;
+            border-right: 3px solid #a6a6a6;
+            border-top: 3px solid #a6a6a6;
+        }
+        .bor3{
+            left: -12px;
+            bottom: -12px;
+            border-left: 3px solid #a6a6a6;
+            border-bottom: 3px solid #a6a6a6;
+        }
+        .bor4{
+            right: -12px;
+            bottom: -12px;
+            border-right: 3px solid #a6a6a6;
+            border-bottom: 3px solid #a6a6a6;
+        }
+
+        .full-box{
+            position: fixed;
+            display: none;
+        }
+        .full-prev{
+            width: 25vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .full-prev-box{
+            width: 120px;
+            height: 280px;
+            background: #facd45;
+            opacity: .8;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 0 10px 10px 0;
+        }
+        .full-prev-triangle{
+            width: 20px;
+            height: 0;
+            border: 20px solid transparent;
+            border-right: 20px solid #fef5da;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .full-next{
+            width: 25vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+        .full-next-box{
+            width: 120px;
+            height: 280px;
+            background: #facd45;
+            opacity: .8;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 10px 0  0 10px;
+        }
+        .full-next-triangle{
+            width: 20px;
+            height: 0;
+            border: 20px solid transparent;
+            border-left: 20px solid #fef5da;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .out{
+            width: 240px;
+            line-height: 90px;
+            background: #facd45;
+            border-radius: 10px;
+            color: #fff;
+            position: fixed;
+            bottom: 100px;
+            right: 20%;
+            text-align: center;
+            font-size: 22px;
+            letter-spacing: 4px;
+        }
+        .out i{
+            font-size: 24px;
+        }
+        .center-btn{
+            width: 30%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 35%;
+            display: none;
+        }
+        .yy .center-btn{
+            display: block;
+        }
+        /*动画*/
+        .move{
+            animation:mymove 1s infinite;
+            position: relative;
+        }
+        @keyframes mymove
+        {
+            from {top:10px;}
+            to {top:-10px;}
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="welcome">
+    <div class="welcome-box">
+        <img src="images/logo.png">
+        <p>欢迎使用秉仁书院在线课件系统</p>
+        <img src="images/entrance.png" class="move">
+    </div>
+</div>
+<div class="wrap">
+    <div class="box ">
+        <div id="con">
+            <div class="con " >
+                <a class="active"><img src="images/curriculum/1.png"></a>
+                <a><img src="images/curriculum/2.png"></a>
+                <a><img src="images/curriculum/3.png"></a>
+                <a><img src="images/curriculum/4.png"></a>
+                <a><img src="images/curriculum/5.png"></a>
+                <a><img src="images/curriculum/6.png"></a>
+                <a><img src="images/curriculum/7.png"></a>
+                <a><img src="images/curriculum/8.png"></a>
+                <a><img src="images/curriculum/9.png"></a>
+                <a>
+                    <video width="100%" height="100%" controls>
+                        <source src="images/curriculum/1.mp4" type="video/mp4">
+                        您的浏览器不支持 HTML5 video 标签。
+                    </video>
+                </a>
+                <a><img src="images/curriculum/10.png"></a>
+                <a><img src="images/curriculum/11.png"></a>
+                <a>
+                    <video width="100%" height="100%" controls>
+                        <source src="images/curriculum/笔划-撇竖.mp4" type="video/mp4">
+                        您的浏览器不支持 HTML5 video 标签。
+                    </video>
+                </a>
+                <a><img src="images/curriculum/12.png"></a>
+                <a><img src="images/curriculum/13.png"></a>
+                <a><img src="images/curriculum/14.png"></a>
+                <a><img src="images/curriculum/15.png"></a>
+                <a><img src="images/curriculum/16.png"></a>
+                <a>
+                    <video width="100%" height="100%" controls>
+                        <source src="images/curriculum/垂.mp4" type="video/mp4">
+                        您的浏览器不支持 HTML5 video 标签。
+                    </video>
+                </a>
+                <a><img src="images/curriculum/17.png"></a>
+                <a><img src="images/curriculum/18.png"></a>
+                <a><img src="images/curriculum/19.png"></a>
+                <a><img src="images/curriculum/20.png"></a>
+                <a><img src="images/curriculum/21.png"></a>
+                <a>
+                    <video width="100%" height="100%" controls>
+                        <source src="images/curriculum/手.mp4" type="video/mp4">
+                        您的浏览器不支持 HTML5 video 标签。
+                    </video>
+                </a>
+                <a><img src="images/curriculum/22.png"></a>
+                <a> <img src="images/curriculum/23.png"></a>
+                <a><img src="images/curriculum/24.png"></a>
+                <a>
+                    <video width="100%" height="100%" controls>
+                        <source src="images/curriculum/采.mp4" type="video/mp4">
+                        您的浏览器不支持 HTML5 video 标签。
+                    </video>
+                </a>
+                <a><img src="images/curriculum/25.png"></a>
+                <a><img src="images/curriculum/26.png"></a>
+            </div>
+            <div class="center-btn">
+
+            </div>
+            <div class="full-box">
+                <div class="full-prev">
+                    <div class="full-prev-box">
+                        <div class="full-prev-triangle"></div>
+                    </div>
+                </div>
+                <div class="full-next">
+                    <div class="full-next-box">
+                        <div class="full-next-triangle"></div>
+                    </div>
+                </div>
+                <div class="out">
+                    <i class="iconfont icon-tuichuquanping"></i>退出全屏
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <div class="ico iconfont icon-qianjin prev">
+
+            </div>
+            <div class="ico iconfont icon-qianjin next">
+
+            </div>
+        </div>
+
+        <button class="btn btn1"><i class="iconfont icon-shipin"></i>视频</button>
+        <button class="btn btn2 full"><i class="iconfont icon-quanping1 "></i>全屏</button>
+        <div>
+            <div class="bor bor1"></div>
+            <div class="bor bor2"></div>
+            <div class="bor bor3"></div>
+            <div class="bor bor4"></div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+
+
+<script>
+    $('.welcome img').click(function () {
+        $('.welcome').hide();
+        $('.wrap').show();
+    });
+
+    var conunt = $('.con img').length;
+    var num = 0;
+    //下一页
+    $('.next,.full-next').click(function () {
+        if (num === conunt - 1) {
+            return
+        }
+        num = num + 1;
+        $('.con a').removeClass('active').eq(num).addClass('active');
+    });
+    //回到上一页
+    $('.prev,.full-prev').click(function () {
+
+        if (num === 0) {
+            return
+        }
+        num = num - 1;
+        $('.con a').removeClass('active').eq(num).addClass('active');
+    });
+    $('.full').click(function () {
+        full()
+    });
+    $('.out').click(function () {
+        exitScreen()
+    });
+    //全屏
+    function full() {
+        //var el = document.documentElement;
+        var el = document.getElementById('con');
+        var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+        if (typeof rfs != "undefined" && rfs) {
+            rfs.call(el);
+        }
+        $("#con").addClass('yy');
+        return;
+    }
+    //退出全屏
+    function exitScreen() {
+        $('#con').removeClass('yy');
+        $('.full-box').hide();
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        }
+        else if (document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        }
+        else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+        if (typeof cfs != "undefined" && cfs) {
+            cfs.call(el);
+        }
+    }
+    //监听退出全屏事件
+    window.onresize = function () {
+
+        if (!checkFull()) {
+            //要执行的动作
+            $('#con').removeClass('yy');
+            $('.full-box').hide();
+        }
+    }
+    function checkFull() {
+        var isFull = document.fullscreenEnabled || window.fullScreen || document.webkitIsFullScreen || document.msFullscreenEnabled;
+        //to fix : false || undefined == undefined
+        if (isFull === undefined) { isFull = false; }
+        return isFull;
+    }
+    //点击中间部分显示按钮
+    $('.center-btn').click(function () {
+        if($('.yy').length>0){
+            $('.full-box').toggle()
+        }
+
+    })
+</script>
+
+
+</body>
+</html>
